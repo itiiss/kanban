@@ -1,0 +1,13 @@
+{
+	"pages": {
+		"home": "首页",
+		"other": {
+			"menu": "其他页面",
+			"desc": "Lorem ipsum dolor sit amet consectetue"
+		},
+		"not-found": "Page not found"
+	},
+	"intro": {
+		"desc": "vite tailwind 模版 "
+	}
+}

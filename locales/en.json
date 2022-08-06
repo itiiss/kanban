@@ -1,0 +1,13 @@
+{
+	"pages": {
+		"home": "Home",
+		"other": {
+			"menu": "Other Page",
+			"desc": "An example of other pages"
+		},
+		"not-found": "Page not found"
+	},
+	"intro": {
+		"desc": "Welcome to Vitailwind, Vite starter template with {tailwindurl}",
+	}
+}
