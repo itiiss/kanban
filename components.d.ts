@@ -12,8 +12,6 @@ declare module '@vue/runtime-core' {
     Card: typeof import('./src/components/Card.vue')['default']
     'Icon:bx:bxMoon': typeof import('~icons/bx/bx-moon')['default']
     'Icon:bx:bxsMoon': typeof import('~icons/bx/bxs-moon')['default']
-    'IconAkarIcons:githubFill': typeof import('~icons/akar-icons/github-fill')['default']
-    ItemAdder: typeof import('./src/components/ItemAdder.vue')['default']
     KanbanPanel: typeof import('./src/components/KanbanPanel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
