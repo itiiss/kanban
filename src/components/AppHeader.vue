@@ -34,7 +34,7 @@ onMounted(async () => {
       class="w-full bg-white text-gray-800 dark:bg-gray-800 dark:text-white py-4 px-8 shadow-md dark:shadow-md flex items-center border-b border-gray-400/50"
     >
       <router-link :to="{ name: 'home' }">
-        <div class="font-bold lg:text-xl md:text-lg text-md">Vitailwind</div>
+        <div class="font-bold lg:text-xl md:text-lg text-md">.KANBAN</div>
       </router-link>
       <div class="ml-auto flex items-center h-full">
         <select
