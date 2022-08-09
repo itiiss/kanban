@@ -2149,21 +2149,21 @@ unplugin-icons@^0.14.7:
     local-pkg "^0.4.2"
     unplugin "^0.8.0"
 
-unplugin-vue-components@0.21.1:
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.21.1.tgz#8ff156da1faaef368d8fad9fa7573c80ad4ccfa0"
-  integrity sha512-8MhIT323q1EUu7rz6NfQeiHqDrZKtygy6s9jzcQAuuZUM2T38SHlPT5YJjBOZmM0Bau6YuNTKfBBX4iHzeusaQ==
+unplugin-vue-components@0.22.2:
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.22.2.tgz#5963b460260db3ff714dd535a372364797bf59a2"
+  integrity sha512-BTkXgiyIg45zL6rjCGcI0sbfNxgp/MGhLKd8CapuWpQecuX4AlMtHGWsANVXmrDgopHxAucS9Mh2l38IYv7InQ==
   dependencies:
     "@antfu/utils" "^0.5.2"
     "@rollup/pluginutils" "^4.2.1"
     chokidar "^3.5.3"
     debug "^4.3.4"
     fast-glob "^3.2.11"
-    local-pkg "^0.4.1"
+    local-pkg "^0.4.2"
     magic-string "^0.26.2"
     minimatch "^5.1.0"
     resolve "^1.22.1"
-    unplugin "^0.7.1"
+    unplugin "^0.9.0"
 
 unplugin-vue-router@^0.0.21:
   version "0.0.21"
@@ -2193,6 +2193,16 @@ unplugin@^0.8.0:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.8.1.tgz#4517b6a8ec3d944e838f9c346921d9777cd159e1"
   integrity sha512-o7rUZoPLG1fH4LKinWgb77gDtTE6mw/iry0Pq0Z5UPvZ9+HZ1/4+7fic7t58s8/CGkPrDpGq+RltO+DmswcR4g==
+  dependencies:
+    acorn "^8.8.0"
+    chokidar "^3.5.3"
+    webpack-sources "^3.2.3"
+    webpack-virtual-modules "^0.4.4"
+
+unplugin@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.9.0.tgz#ebad287d61aa1b1f16de60feea74e8dd12224819"
+  integrity sha512-6o7q8Y9yxdPi5yCPmRuFfeNnVzGumRNZSK6hIkvZ6hd0cfigVdm0qBx/GgQ/NEjs54eUV1qTjvMYKRs9yh3rzw==
   dependencies:
     acorn "^8.8.0"
     chokidar "^3.5.3"
