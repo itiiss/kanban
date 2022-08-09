@@ -1,11 +1,15 @@
 import { Column, ColumnType, TaskType, Story } from '@/types/global';
 import { defineStore } from 'pinia';
 
-export const useColumnStore = defineStore('column', () => {
-	const stories = reactive<Story[]>([
+const FIRST_STORY_ID = 1111111;
+const SECOND_STORY_ID = 22222222;
+
+export const useColumnStore = defineStore('story', () => {
+
+	const DemoStory = [
 		{
 			title: 'Story 1',
-			id: 1111111,
+			id: FIRST_STORY_ID,
 			columns: [
 				{
 					title: ColumnType.Backlog,
@@ -65,7 +69,7 @@ export const useColumnStore = defineStore('column', () => {
 			],
 		},
 		{
-			id: 22222222,
+			id: SECOND_STORY_ID,
 			title: 'Story 2',
 			columns: [
 				{title: ColumnType.Backlog, tasks: []},
@@ -74,10 +78,11 @@ export const useColumnStore = defineStore('column', () => {
 				{title: ColumnType.Done, tasks: []}
 			]
 		}
-	]);
+	]
 
+	const persistantStory = useStorage<Story[]>("story", DemoStory);
 
-	const currentStory = ref(1111111);
+	const currentStory = ref(FIRST_STORY_ID);
 
 	const changeCurrentStory = (storyId: number) => {
 		currentStory.value = storyId;
@@ -94,7 +99,7 @@ export const useColumnStore = defineStore('column', () => {
 
 	const findStoryIndex = (storyId: number) => {
 		return (
-			stories.findIndex(story => story.id === storyId) ?? 0
+			persistantStory.value.findIndex(story => story.id === storyId) ?? 0
 		);
 	};
 
@@ -108,7 +113,7 @@ export const useColumnStore = defineStore('column', () => {
 	) => {
 		const columnIndex = findTypeIndex(columnType);
 		const storyIndex = findStoryIndex(storyId);
-		stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.push({
+		persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.push({
 			id: new Date().valueOf(),
 			title: taskTitle,
 			date: new Date().toDateString().split(' ').slice(1,3).join(" "),
@@ -119,12 +124,12 @@ export const useColumnStore = defineStore('column', () => {
 	const deleteTask = (taskID: number, columnType: ColumnType, storyID: number) => {
 		const columnIndex = findTypeIndex(columnType);
 		const storyIndex = findStoryIndex(storyID);
-		const taskIndex =  stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.findIndex(task => task.id === taskID) ?? 0;
-		stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.splice(taskIndex, 1)
+		const taskIndex =  persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.findIndex(task => task.id === taskID) ?? 0;
+		persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.splice(taskIndex, 1)
 	}
 
 	const addNewStory = (storyTitle: string) => {
-		stories.push({
+		persistantStory.value.push({
 			title: storyTitle,
 			id: new Date().valueOf(),
 			columns: [
@@ -138,8 +143,8 @@ export const useColumnStore = defineStore('column', () => {
 
 	const deleteStoryByID = (storyId: number) => {
 		const index = findStoryIndex(storyId);
-		stories.splice(index, 1);
+		persistantStory.value.splice(index, 1);
 	}
 
-	return { stories, addNewTask, addNewStory, currentStory , changeCurrentStory , deleteStoryByID, deleteTask};
+	return { stories: persistantStory, addNewTask, addNewStory, currentStory , changeCurrentStory , deleteStoryByID, deleteTask};
 });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: "Other Pages",
+  title: ".Kanban",
 });
 </script>
 
