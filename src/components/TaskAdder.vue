@@ -27,16 +27,17 @@
           class="input input-bordered w-full max-w-xs"
         />
       </div>
-      <div class="form-control w-full m-auto">
+      <div class="form-control w-full my-4">
         <label class="label">
-          <span class="label-text">Please input task description</span>
+          <span class="label-text">Please Select task type</span>
         </label>
-        <input
-          v-model="taskDescription"
-          type="text"
-          placeholder="Type here"
-          class="input input-bordered w-full max-w-xs"
-        />
+        <select class="select select-info w-full max-w-xs" v-model="taskType">
+          <option>{{ TaskType.Backend }}</option>
+          <option>{{ TaskType.Frontend }}</option>
+          <option>{{ TaskType.FeatureRequest }}</option>
+          <option>{{ TaskType.QA }}</option>
+          <option>{{ TaskType.Design }}</option>
+        </select>
       </div>
       <div class="modal-action">
         <label :for="columnType + storyID" class="btn btn-primary" @click="onConfirm"
@@ -51,15 +52,13 @@
 import { useColumnStore } from "@/store";
 import { ColumnType, TaskType } from "@/types/global";
 
-// const props = defineProps(["columnType", "storyID"]);
-
 const props = defineProps({
   columnType: { type: String, required: true },
   storyID: { type: Number, required: true },
 });
 
 const taskTitle = ref("");
-const taskDescription = ref("");
+
 const taskType = ref<TaskType>(TaskType.FeatureRequest);
 
 const store = useColumnStore();
@@ -67,13 +66,11 @@ const store = useColumnStore();
 const onConfirm = () => {
   store.addNewTask(
     taskTitle.value,
-    taskDescription.value,
     taskType.value,
     props.storyID,
     props.columnType as ColumnType
   );
   taskTitle.value = "";
-  taskDescription.value = "";
 };
 </script>
 

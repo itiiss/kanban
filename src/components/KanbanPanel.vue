@@ -9,7 +9,7 @@ const store = useColumnStore();
   <div class="flex flex-col gap-5 w-full">
     <div
       v-for="story in store.stories"
-      :key="story.title"
+      :key="story.id"
       class="collapse group collapse-arrow rounded-xl"
     >
       <story-panel :story="story" />

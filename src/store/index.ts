@@ -14,7 +14,7 @@ export const useColumnStore = defineStore('column', () => {
 							id: 1,
 							title: 'Add discount code to checkout page',
 							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
+							type: TaskType.Frontend,
 						},
 						{
 							id: 2,
@@ -158,9 +158,9 @@ export const useColumnStore = defineStore('column', () => {
 	};
 
 
+
 	const addNewTask = (
 		taskTitle: string,
-		taskDesc: string,
 		taskType: TaskType,
 		storyId: number,
 		columnType: ColumnType = ColumnType.Backlog
@@ -170,10 +170,17 @@ export const useColumnStore = defineStore('column', () => {
 		stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.push({
 			id: new Date().valueOf(),
 			title: taskTitle,
-			date: new Date().toDateString(),
+			date: new Date().toDateString().split(' ').slice(1,3).join(" "),
 			type: taskType,
 		});
 	};
+
+	const deleteTask = (taskID: number, columnType: ColumnType, storyID: number) => {
+		const columnIndex = findTypeIndex(columnType);
+		const storyIndex = findStoryIndex(storyID);
+		const taskIndex =  stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.findIndex(task => task.id === taskID) ?? 0;
+		stories.at(storyIndex)?.columns.at(columnIndex)?.tasks.splice(taskIndex, 1)
+	}
 
 	const addNewStory = (storyTitle: string) => {
 		stories.push({
@@ -193,5 +200,5 @@ export const useColumnStore = defineStore('column', () => {
 		stories.splice(index, 1);
 	}
 
-	return { stories, addNewTask, addNewStory, currentStory , changeCurrentStory , deleteStoryByID};
+	return { stories, addNewTask, addNewStory, currentStory , changeCurrentStory , deleteStoryByID, deleteTask};
 });

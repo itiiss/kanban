@@ -36,11 +36,16 @@ const isExpand = computed(() => props.story.id === store.currentStory);
                 :animation="200"
                 ghost-class="ghost-card"
                 group="tasks"
-                @change="onChange"
                 :item-key="column.title"
               >
                 <template #item="{ element }">
-                  <card :key="element.id" :task="element" class="mt-3 cursor-move" />
+                  <card
+                    :key="element.id"
+                    :task="element"
+                    :column="column"
+                    :story="story"
+                    class="mt-3 cursor-move"
+                  />
                 </template>
               </draggable>
             </div>
