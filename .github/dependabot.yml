@@ -9,9 +9,9 @@ updates:
   open-pull-requests-limit: 10
   rebase-strategy: "auto"
   reviewers:
-    - zynth17
+    - itiiss
   assignees:
-    - zynth17
+    - itiiss
   commit-message:
     prefix: fix
     prefix-development: chore
@@ -25,9 +25,9 @@ updates:
   open-pull-requests-limit: 10
   rebase-strategy: "auto"
   reviewers:
-    - zynth17
+    - itiiss
   assignees:
-    - zynth17
+    - itiiss
   commit-message:
     prefix: fix
     prefix-development: chore

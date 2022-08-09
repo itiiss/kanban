@@ -1,84 +1,87 @@
 import { Column, ColumnType, TaskType, Story } from '@/types/global';
 import { defineStore } from 'pinia';
 
-const FIRST_STORY_ID = 1111111;
-const SECOND_STORY_ID = 22222222;
+export const FIRST_STORY_ID = 1111111;
+export const SECOND_STORY_ID = 22222222;
+
+export const FIRST_TASK_ID = 1111;
+
+export const DemoStory = [
+	{
+		title: 'Story 1',
+		id: FIRST_STORY_ID,
+		columns: [
+			{
+				title: ColumnType.Backlog,
+				tasks: [
+					{
+						id: FIRST_TASK_ID,
+						title: 'Add discount code to checkout page',
+						date: 'Sep 14',
+						type: TaskType.Frontend,
+					},
+					{
+						id: 3,
+						title: 'Design shopping cart dropdown',
+						date: 'Sep 9',
+						type: TaskType.Design,
+					},
+					{
+						id: 5,
+						title: 'Test checkout flow',
+						date: 'Sep 15',
+						type: TaskType.QA,
+					},
+				],
+			},
+			{
+				title: ColumnType.InProgress,
+				tasks: [
+					{
+						id: 6,
+						title: 'Design shopping cart dropdown',
+						date: 'Sep 9',
+						type: TaskType.Design,
+					},
+				],
+			},
+			{
+				title: ColumnType.Review,
+				tasks: [
+					{
+						id: 9,
+						title: 'Provide documentation on integrations',
+						date: 'Sep 12',
+					},
+					{
+						id: 13,
+						title: 'Add discount code to checkout page',
+						date: 'Sep 14',
+						type: TaskType.FeatureRequest,
+					},
+				],
+			},
+			{
+				title: ColumnType.Done,
+				tasks: [
+				],
+			},
+		],
+	},
+	{
+		id: SECOND_STORY_ID,
+		title: 'Story 2',
+		columns: [
+			{title: ColumnType.Backlog, tasks: []},
+			{title: ColumnType.InProgress, tasks: []},
+			{title: ColumnType.Review, tasks: []},
+			{title: ColumnType.Done, tasks: []}
+		]
+	}
+]
 
 export const useColumnStore = defineStore('story', () => {
 
-	const DemoStory = [
-		{
-			title: 'Story 1',
-			id: FIRST_STORY_ID,
-			columns: [
-				{
-					title: ColumnType.Backlog,
-					tasks: [
-						{
-							id: 1,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.Frontend,
-						},
-						{
-							id: 3,
-							title: 'Design shopping cart dropdown',
-							date: 'Sep 9',
-							type: TaskType.Design,
-						},
-						{
-							id: 5,
-							title: 'Test checkout flow',
-							date: 'Sep 15',
-							type: TaskType.QA,
-						},
-					],
-				},
-				{
-					title: ColumnType.InProgress,
-					tasks: [
-						{
-							id: 6,
-							title: 'Design shopping cart dropdown',
-							date: 'Sep 9',
-							type: TaskType.Design,
-						},
-					],
-				},
-				{
-					title: ColumnType.Review,
-					tasks: [
-						{
-							id: 9,
-							title: 'Provide documentation on integrations',
-							date: 'Sep 12',
-						},
-						{
-							id: 13,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
-						},
-					],
-				},
-				{
-					title: ColumnType.Done,
-					tasks: [
-					],
-				},
-			],
-		},
-		{
-			id: SECOND_STORY_ID,
-			title: 'Story 2',
-			columns: [
-				{title: ColumnType.Backlog, tasks: []},
-				{title: ColumnType.InProgress, tasks: []},
-				{title: ColumnType.Review, tasks: []},
-				{title: ColumnType.Done, tasks: []}
-			]
-		}
-	]
 
 	const persistantStory = useStorage<Story[]>("story", DemoStory);
 
@@ -113,7 +116,8 @@ export const useColumnStore = defineStore('story', () => {
 	) => {
 		const columnIndex = findTypeIndex(columnType);
 		const storyIndex = findStoryIndex(storyId);
-		persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.push({
+		console.log('persistantStory', persistantStory.value)
+		persistantStory.value[storyIndex].columns[columnIndex].tasks.push({
 			id: new Date().valueOf(),
 			title: taskTitle,
 			date: new Date().toDateString().split(' ').slice(1,3).join(" "),
@@ -124,8 +128,8 @@ export const useColumnStore = defineStore('story', () => {
 	const deleteTask = (taskID: number, columnType: ColumnType, storyID: number) => {
 		const columnIndex = findTypeIndex(columnType);
 		const storyIndex = findStoryIndex(storyID);
-		const taskIndex =  persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.findIndex(task => task.id === taskID) ?? 0;
-		persistantStory.value.at(storyIndex)?.columns.at(columnIndex)?.tasks.splice(taskIndex, 1)
+		const taskIndex =  persistantStory.value[storyIndex].columns[columnIndex].tasks.findIndex(task => task.id === taskID) ?? 0;
+		persistantStory.value[storyIndex].columns[columnIndex].tasks.splice(taskIndex, 1)
 	}
 
 	const addNewStory = (storyTitle: string) => {
