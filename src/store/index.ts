@@ -17,21 +17,10 @@ export const useColumnStore = defineStore('column', () => {
 							type: TaskType.Frontend,
 						},
 						{
-							id: 2,
-							title: 'Provide documentation on integrations',
-							date: 'Sep 12',
-						},
-						{
 							id: 3,
 							title: 'Design shopping cart dropdown',
 							date: 'Sep 9',
 							type: TaskType.Design,
-						},
-						{
-							id: 4,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
 						},
 						{
 							id: 5,
@@ -50,18 +39,6 @@ export const useColumnStore = defineStore('column', () => {
 							date: 'Sep 9',
 							type: TaskType.Design,
 						},
-						{
-							id: 7,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
-						},
-						{
-							id: 8,
-							title: 'Provide documentation on integrations',
-							date: 'Sep 12',
-							type: TaskType.Backend,
-						},
 					],
 				},
 				{
@@ -71,24 +48,6 @@ export const useColumnStore = defineStore('column', () => {
 							id: 9,
 							title: 'Provide documentation on integrations',
 							date: 'Sep 12',
-						},
-						{
-							id: 10,
-							title: 'Design shopping cart dropdown',
-							date: 'Sep 9',
-							type: TaskType.Design,
-						},
-						{
-							id: 11,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
-						},
-						{
-							id: 12,
-							title: 'Design shopping cart dropdown',
-							date: 'Sep 9',
-							type: TaskType.Design,
 						},
 						{
 							id: 13,
@@ -101,24 +60,6 @@ export const useColumnStore = defineStore('column', () => {
 				{
 					title: ColumnType.Done,
 					tasks: [
-						{
-							id: 14,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
-						},
-						{
-							id: 15,
-							title: 'Design shopping cart dropdown',
-							date: 'Sep 9',
-							type: TaskType.Design,
-						},
-						{
-							id: 16,
-							title: 'Add discount code to checkout page',
-							date: 'Sep 14',
-							type: TaskType.FeatureRequest,
-						},
 					],
 				},
 			],

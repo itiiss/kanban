@@ -24,7 +24,7 @@ const isExpand = computed(() => props.story.id === store.currentStory);
         class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"
       >
         <div class="flex justify-center">
-          <div class="min-h-screen flex overflow-x-scroll pb-12">
+          <div class="flex overflow-x-hidden min-h-48">
             <div
               v-for="column in story.columns"
               :key="column.title"
@@ -67,5 +67,9 @@ const isExpand = computed(() => props.story.id === store.currentStory);
   opacity: 0.5;
   background: #f7fafc;
   border: 1px solid #4299e1;
+}
+
+.min-h-48 {
+  min-height: 12rem;
 }
 </style>
